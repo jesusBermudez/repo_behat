@@ -1,0 +1,26 @@
+default:
+  autoload:
+    'src': %paths.base%/features/bootstrap/src
+  extensions:
+      Behat\MinkExtension:
+          base_url: 'http://www.peluches-cel.com/'
+          goutte: ~
+          default_session: selenium2
+          show_cmd: 'firefox %s'
+          browser_name: 'firefox'
+          selenium2:
+              wd_host: 'http://127.0.0.1:4444/wd/hub'
+              capabilities:
+                  version: ''
+  suites:
+      shop:
+          path: %paths.base%/features/shop
+          filters:
+              tags: '@buy'
+          contexts:
+              - src\FeatureContext:
+                  parameters:
+                      baseUrl: 'http://www.peluches-cel.com/'
+              - src\HomeContext:
+                  parameters:
+                      baseUrl: 'http://www.peluches-cel.com/'

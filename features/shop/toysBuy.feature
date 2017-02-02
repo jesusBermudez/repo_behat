@@ -5,7 +5,7 @@ Feature: Buy toys
 
   @buy
   Scenario: Add two products to cart, check into cart and make ends cart without paying
-    Given I am on "http://www.peluches-cel.com/"
+    Given I am on superhomepage
     When I follow "Peluches gigantes"
     And I follow "Oso de peluche gigante HUELLA blanco - 100cm"
     And I press "Añadir al carrito"

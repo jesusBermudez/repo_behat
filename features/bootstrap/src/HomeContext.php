@@ -1,17 +1,11 @@
 <?php
 namespace src;
 
+use Behat\MinkExtension\Context\MinkContext;
 
 
-use Behat\MinkExtension\Context\RawMinkContext;
-
-
-class HomeContext extends RawMinkContext
+class HomeContext extends MinkContext
 {
-
-    /** @var array  */
-    private $parameters;
-
     /**
      * Initializes context.
      *
@@ -21,10 +15,12 @@ class HomeContext extends RawMinkContext
      *
      * @param $parameters
      */
-    public function __construct(array $parameters)
+
+    private $base_url;
+    public function __construct($params)
     {
         date_default_timezone_set('Europe/Madrid');
-        $this->parameters = $parameters;
+        $this->base_url = $params['base_url'];
     }
 
     /**
@@ -35,5 +31,13 @@ class HomeContext extends RawMinkContext
     {
         $session = $this->getSession();
         $session->wait(($timeToWait * 1000), false);
+    }
+
+    /**
+     * @Given /^I am on superhomepage$/
+     */
+    public function iAmOnSuperhomepage()
+    {
+        $this->getSession()->visit($this->locatePath($this->base_url));
     }
 }

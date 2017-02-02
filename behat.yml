@@ -3,24 +3,29 @@ default:
     'src': %paths.base%/features/bootstrap/src
   extensions:
       Behat\MinkExtension:
-          base_url: 'http://www.peluches-cel.com/'
           goutte: ~
           default_session: selenium2
-          show_cmd: 'firefox %s'
-          browser_name: 'firefox'
+          show_cmd: 'chrome %s'
+          browser_name: 'chrome'
           selenium2:
               wd_host: 'http://127.0.0.1:4444/wd/hub'
               capabilities:
                   version: ''
   suites:
-      shop:
-          path: %paths.base%/features/shop
-          filters:
-              tags: '@buy'
-          contexts:
-              - src\FeatureContext:
-                  parameters:
-                      baseUrl: 'http://www.peluches-cel.com/'
+        calculator:
+            paths: [ %paths.base%/features/calculator ]
+            contexts: [ src\CalculatorContext ]
+        shop-pro:
+            paths: [ %paths.base%/features/shop ]
+            filters:
+                tags: '@buy'
+            contexts:
               - src\HomeContext:
-                  parameters:
-                      baseUrl: 'http://www.peluches-cel.com/'
+                - base_url: "http://www.peluches-cel.com"
+        shop:
+            paths: [ %paths.base%/features/shop ]
+            filters:
+                tags: '@buy'
+            contexts:
+              - src\HomeContext:
+                - base_url: "http://www.peluches-cel-pro.com"

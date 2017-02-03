@@ -15,17 +15,13 @@ default:
         calculator:
             paths: [ %paths.base%/features/calculator ]
             contexts: [ src\CalculatorContext ]
-        shop-pro:
-            paths: [ %paths.base%/features/shop ]
-            filters:
-                tags: '@buy'
-            contexts:
-              - src\HomeContext:
-                - base_url: "http://www.peluches-cel.com"
         shop:
             paths: [ %paths.base%/features/shop ]
             filters:
                 tags: '@buy'
             contexts:
               - src\HomeContext:
-                - base_url: "http://www.peluches-cel-pro.com"
+                - base_url: "http://www.peluches-cel.com"
+        videostore:
+            paths: [ %paths.base%/features/videoStore ]
+            contexts: [ src\VideoStoreContext ]

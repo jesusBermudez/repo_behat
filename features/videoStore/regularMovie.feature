@@ -6,7 +6,7 @@ Feature: Rental Regular movie
   Scenario: Rental a regular movie without passing the limit of days
     Given I insert the name of customer "Juan Lopez Garcia"
     When I rental a regular movie with title "Daniel el travieso" during 2 days
-    Then I should see the total amount is "3" euros
+    Then I should see the total amount is "2.0" euros
 
   Scenario: Rental a regular movie passing the limit of days
     Given I insert the name of customer "Juan Lopez Garcia"

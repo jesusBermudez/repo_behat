@@ -3,7 +3,6 @@
 namespace src;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
 
 class VideoStoreContext implements Context
@@ -23,6 +22,7 @@ class VideoStoreContext implements Context
 
     /**
      * @Given /^I insert the name of customer "([^"]*)"$/
+     * @param string $arg1
      */
     public function iInsertTheNameOfCustomer($arg1)
     {
@@ -31,6 +31,8 @@ class VideoStoreContext implements Context
 
     /**
      * @When /^I rental a (children|regular|new) movie with title "([^"]*)" during (\d+) days$/
+     * @param string $arg1
+     * @param int $arg2
      */
     public function iRentalAChildrenMovieWithTitleDuringDays($arg1, $arg2)
     {
@@ -39,6 +41,7 @@ class VideoStoreContext implements Context
 
     /**
      * @Then /^I should see the total amount is "([^"]*)" euros$/
+     * @param float $arg1
      */
     public function iShouldSeeTheTotalAmountIsEuros($arg1)
     {

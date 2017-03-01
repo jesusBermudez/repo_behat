@@ -1,7 +1,8 @@
 <?php
-namespace src;
+namespace Acceptance;
 
 use Behat\Behat\Context\Context;
+use Behat\Behat\Tester\Exception\PendingException;
 use Calculator\Calculator;
 use PHPUnit_Framework_Assert as PHPUnit;
 
@@ -24,13 +25,6 @@ class CalculatorContext implements Context
         $this->calculator = new Calculator();
     }
 
-    /**
-     * @Given I have entered :number into the calculator
-     */
-    public function iHaveEnteredIntoTheCalculator($number)
-    {
-        $this->calculator->addNumber($number);
-    }
 
     /**
      * @When I press add
@@ -46,5 +40,13 @@ class CalculatorContext implements Context
     public function theResultShouldBeOnTheScreen($result)
     {
         PHPUnit::assertEquals($result, $this->calculator->getTotal());
+    }
+
+    /**
+     * @Given /^I have entered (\-?\d+) into the calculator$/
+     */
+    public function iHaveEnteredIntoTheCalculator1($arg1)
+    {
+        $this->calculator->addNumber($arg1);
     }
 }

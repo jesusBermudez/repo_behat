@@ -1,27 +1,25 @@
 default:
-  autoload:
-    'src': %paths.base%/features/bootstrap/src
-  extensions:
-      Behat\MinkExtension:
-          goutte: ~
-          default_session: selenium2
-          show_cmd: 'chrome %s'
-          browser_name: 'chrome'
-          selenium2:
-              wd_host: 'http://127.0.0.1:4444/wd/hub'
-              capabilities:
-                  version: ''
-  suites:
+    extensions:
+        Behat\MinkExtension:
+            goutte: ~
+            default_session: selenium2
+            show_cmd: 'chrome %s'
+            browser_name: 'chrome'
+            selenium2:
+                wd_host: 'http://127.0.0.1:4444/wd/hub'
+                capabilities:
+                    version: ''
+    suites:
         calculator:
             paths: [ %paths.base%/features/calculator ]
-            contexts: [ src\CalculatorContext ]
+            filters:
+                tags: '@calculator'
+            contexts:
+                - Acceptance\CalculatorContext
         shop:
             paths: [ %paths.base%/features/shop ]
             filters:
                 tags: '@buy'
             contexts:
-              - src\HomeContext:
-                - base_url: "http://www.peluches-cel.com"
-        videostore:
-            paths: [ %paths.base%/features/videoStore ]
-            contexts: [ src\VideoStoreContext ]
+                - Acceptance\HomeContext:
+                    - base_url: "http://www.peluches-cel.com"

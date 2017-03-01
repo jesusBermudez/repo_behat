@@ -1,5 +1,5 @@
 <?php
-namespace src;
+namespace Acceptance;
 
 use Behat\MinkExtension\Context\MinkContext;
 
